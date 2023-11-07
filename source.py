@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import solve_ivp
 
-def func(t, r, W, W0, sigma, d, G, g, t0):
+def func(t, r, W, d, G, g):
     r = np.asarray(r, dtype=np.complex128)
     drdt = np.zeros_like(r, dtype=np.complex128)
     W[0] = W0[0]* np.e ** -(((t - t0[0]) /2*sigma[0]) ** 2)
