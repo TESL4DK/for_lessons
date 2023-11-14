@@ -5,8 +5,8 @@ from scipy.integrate import solve_ivp
 def func(t, r, G, W0, g, d, sigma, t0):
     r = np.asarray(r, dtype=np.complex128)
     drdt = np.zeros_like(r, dtype=np.complex128)
-    W[0] = W0[0] * np.e ** -(((t - t0[0]) /(2 * sigma[0])) ** 2)
-    W[1] = W0[1] * np.e ** -(((t - t0[1]) /(2 * sigma[1])) ** 2)
+    W[0] = W0[0]*np.exp(-(((t - t0[0])/(2*sigma[0]))**2))
+    W[1] = W0[1]*np.exp(-(((t - t0[1])/(2*sigma[1]))**2))
     drdt[0] = G[3]*r[4] - 1j*W[0]*(r[3] - r[1])
     drdt[4] = -(G[3] + G[5])*r[4] - 1j*(W[0]*(r[1] - r[3]) + W[1]*(r[7] - r[5]))
     drdt[8] = G[5]*r[4] - 1j*W[1]*(r[5] - r[7])
